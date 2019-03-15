@@ -1,0 +1,71 @@
+<!--
+ - Copyright 1999-2011 Alibaba Group.
+ -  
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -  
+ -      http://www.apache.org/licenses/LICENSE-2.0
+ -  
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+-->
+<assembly>
+	<id>assembly</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<fileSets>
+		<!--  -->
+		<fileSet>
+			<directory>${project.build.directory}/classes</directory>
+			<outputDirectory>lib/classes</outputDirectory>
+			<excludes>  
+                <exclude>*.xml</exclude>  
+                <exclude>*.properties</exclude>
+                <exclude>/spring/**</exclude>
+                <exclude>/domains/**</exclude>
+            </excludes>
+		</fileSet>
+		
+		<fileSet>
+			<directory>src/main/resources/</directory>
+			<outputDirectory>conf</outputDirectory>
+		</fileSet>
+		
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory>lib/mapreduce</outputDirectory>
+			<includes>
+				<include>${project.artifactId}.jar</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory>lib/spark</outputDirectory>
+			<includes>
+				<include>${project.artifactId}-esearch-glb.jar</include>
+			</includes>
+		</fileSet>
+		
+		<fileSet>
+			<directory>${project.build.directory}/lib</directory>
+			<outputDirectory>lib</outputDirectory>
+		</fileSet>
+		
+		<fileSet>
+			<directory>src/main/assembly/logs</directory>
+			<outputDirectory>logs</outputDirectory>
+		</fileSet>
+		
+		<fileSet>
+			<directory>src/main/assembly/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+		</fileSet>
+
+	</fileSets>
+</assembly>

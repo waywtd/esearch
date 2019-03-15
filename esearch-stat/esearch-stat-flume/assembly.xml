@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+	<id>esearch-glb</id>
+	<formats>
+		<format>jar</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>${project.build.directory}/classes</directory>
+			<outputDirectory>../../</outputDirectory>
+			<excludes>
+				<exclude>*.xml</exclude>
+				<exclude>*.properties</exclude>
+				<exclude>/spring</exclude>
+				<exclude>/spring/*.xml</exclude>
+			</excludes>
+
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/resources/</directory>
+			<outputDirectory>conf</outputDirectory>
+		</fileSet>
+
+		<fileSet>
+			<directory>${project.build.directory}/lib</directory>
+			<outputDirectory>lib</outputDirectory>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/assembly/logs</directory>
+			<outputDirectory>logs</outputDirectory>
+		</fileSet>
+
+		<fileSet>
+			<directory>src/main/assembly/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+		</fileSet>
+
+	</fileSets>
+	<dependencySets>
+		<dependencySet>
+			<includes>
+				<include>com.alibaba:fastjson:jar:1.2.15</include>
+				<include>org.apache.flume.flume-ng-sinks:flume-ng-kafka-sink:1.6.0</include>
+			</includes>
+			<unpack>true</unpack>
+		</dependencySet>
+	</dependencySets>
+</assembly>
